@@ -12,7 +12,7 @@ the design of storage
      |  Block  |   Stream of bits.
      +---------+
 ```
-
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vS_n1FvSu6mdmSirkBrIIEib2gqhgtatD9awaP2_WdrGN4zTNeg620XQd9P95WT-IvognSxIIdCM5uE/pub?w=1146&amp;h=900">
 
 # Code Flow
 ## Concepts
@@ -179,8 +179,7 @@ BlockService 添加block 最终调用 `blockstore` 来添加 block，并且放�
 
 ### Blockstore
 
-// Blockstore wraps a Datastore block-centered methods and provides a layer
-// of abstraction which allows to add different caching strategies.
+// Blockstore wraps a Datastore block-centered methods and provides a layer of abstraction which allows to add different caching strategies.
      
      func (bs *blockstore) Put(block blocks.Block) error {
           k := dshelp.CidToDsKey(block.Cid())
@@ -398,6 +397,8 @@ datastore.go 接口中定义了对block的增删查改方法
 		return val, nil
 	}
 
+### summary
+![](https://github.com/xinruimao/codeFlow/blob/main/images/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png)
 
 
 ## IPFS repo 定义
