@@ -59,7 +59,7 @@ Within the function, a new `Adder` is created with the configured `Blockstore` a
 
   - **`adder.addFileNode(path string, file files.Node, toplevel bool)`** - *Create the _DAG_ and add to `MFS`*
       -   `adder.maybePauseForGC()`
-      -   `adder.addFileNode`
+      -   `adder.addFileNode()`
       -   `adder.maybePauseForGC()`
       -   `adder.PinRoot(rn)`
       -   `adder.dagService.Add(adder.ctx, root)`
