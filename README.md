@@ -467,12 +467,6 @@ keys 目录包含节点有权访问的所有密钥。 密钥以其 hash 命名�
 datastore 目录包含用于存储在 leveldb 中用来操作 IPFS 节点的数据。 如果用户改为使用 boltdb datastore，则该目录将命名为boltdb。 因此，每个数据库的数据文件不会发生冲突。
 这个目录将来可以能考虑改为 leveldb 命名。
 
-<details>
-  <summary>show code</summary>
-  <pre><code> 
-     System.out.println("Hello");
-  </code></pre>
-</details>
 
 
 
