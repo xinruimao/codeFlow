@@ -53,7 +53,7 @@ datastore.go 接口中定义了对block的增删查改方法
 		},
 	}
 
-## 将Blobstore & BlobFS作为leveldb的后端支撑
+## 将Blobstore & BlobFS作为leveldb的后端存储支撑
 spdk已经有过将Blobfs & Blobstore作为rocksdb的后端存储支撑的成功案例，而Rocksdb是Facebook公司在Leveldb基础之上开发的一个嵌入式K-V系统，故此方案直观上是可行的，也具有参考。
 
 ## Blobstore & BlobFS
