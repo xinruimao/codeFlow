@@ -1,6 +1,6 @@
 
 
-```
+` ``go
 /*
 Datastore represents storage for any key-value pair.
 
@@ -86,7 +86,7 @@ type Read interface {
 	//
 	Query(q query.Query) (query.Results, error)
 }
-```
+` ``
 
 
 
