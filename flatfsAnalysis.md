@@ -265,6 +265,86 @@ os.RemoveAll
 ### Blobfs
 
 
+```
+struct spdk_file {
+	struct spdk_filesystem	*fs;
+	struct spdk_blob	*blob;
+	char			*name;
+	uint64_t		length;
+	bool                    is_deleted;
+	bool			open_for_writing;
+	uint64_t		length_flushed;
+	uint64_t		length_xattr;
+	uint64_t		append_pos;
+	uint64_t		seq_byte_count;
+	uint64_t		next_seq_offset;
+	uint32_t		priority;
+	TAILQ_ENTRY(spdk_file)	tailq;
+	spdk_blob_id		blobid;
+	uint32_t		ref_count;
+	pthread_spinlock_t	lock;
+	struct cache_buffer	*last;
+	struct cache_tree	*tree;
+	TAILQ_HEAD(open_requests_head, spdk_fs_request) open_requests;
+	TAILQ_HEAD(sync_requests_head, spdk_fs_request) sync_requests;
+	TAILQ_ENTRY(spdk_file)	cache_tailq;
+};
+
+
+struct spdk_filesystem {
+	struct spdk_blob_store	*bs;
+	TAILQ_HEAD(, spdk_file)	files;
+	struct spdk_bs_opts	bs_opts;
+	struct spdk_bs_dev	*bdev;
+	fs_send_request_fn	send_request;
+
+	struct {
+		uint32_t		max_ops;
+		struct spdk_io_channel	*sync_io_channel;
+		struct spdk_fs_channel	*sync_fs_channel;
+	} sync_target;
+
+	struct {
+		uint32_t		max_ops;
+		struct spdk_io_channel	*md_io_channel;
+		struct spdk_fs_channel	*md_fs_channel;
+	} md_target;
+
+	struct {
+		uint32_t		max_ops;
+	} io_target;
+};
+```
+
+
+spdk_fs_open_file(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx,const char *name, uint32_t flags, struct spdk_file **file)
+
+spdk_fs_delete_file(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx,const char *name)
+
+spdk_fs_file_stat(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx,const char *name, struct spdk_file_stat *stat)
+
+spdk_fs_create_file(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx, const char *name)
+
+
+spdk_file_read(struct spdk_file *file, struct spdk_fs_thread_ctx *ctx，void *payload, uint64_t offset, uint64_t length)
+
+spdk_file_write(struct spdk_file *file, struct spdk_fs_thread_ctx *ctx,void *payload, uint64_t offset, uint64_t length)
+
+spdk_file_close(struct spdk_file *file, struct spdk_fs_thread_ctx *ctx)
+
+
+summary
+
+
+
+
+
+
+
+
+
+
+
 
 
 
