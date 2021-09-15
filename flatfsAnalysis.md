@@ -92,7 +92,7 @@ type Read interface {
 ```
 
 ### flatfs
-`https://github.com/ipfs/go-ds-flatfs`
+https://github.com/ipfs/go-ds-flatfs
 
 ```
 // Put stores a key/value in the datastore.
@@ -260,6 +260,11 @@ os.Open
 os.RemoveAll
 
 ```
+
+
+### Blobfs
+
+
 
 
 
