@@ -314,7 +314,6 @@ struct spdk_filesystem {
 		uint32_t		max_ops;
 	} io_target;
 };
-```
 
 
 spdk_fs_open_file(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx,const char *name, uint32_t flags, struct spdk_file **file)
@@ -332,17 +331,30 @@ spdk_file_write(struct spdk_file *file, struct spdk_fs_thread_ctx *ctx,void *pay
 
 spdk_file_close(struct spdk_file *file, struct spdk_fs_thread_ctx *ctx)
 
+spdk_fs_rename_file(struct spdk_filesystem *fs, struct spdk_fs_thread_ctx *ctx,const char *old_name, const char *new_name)
+
+```
 
 summary
 
 
 
-
-
-
-
-
-
+ 
+ flatfs   |  blobfs  
+ -------- | ---------
+os.Open    	| spdk_fs_open_file
+os.Remove	| spdk_fs_delete_file
+os.Close	| spdk_file_close
+ioutil.TempFile
+os.write	| spdk_file_write
+os.Stat		| spdk_fs_file_stat
+os.IsNotExist
+os.Rename	| spdk_fs_rename_file
+os.OpenFile
+ioutil.ReadFile	| spdk_file_read
+os.Mkdir
+os.IsExist
+os.RemoveAll
 
 
 
